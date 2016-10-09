@@ -1,0 +1,28 @@
+#!/bin/sh
+
+#rootpasswd=$1
+#user=$2
+#group=$3
+#userpasswd=$4
+#userid=$5
+#groupid=$6
+
+# change root password
+echo "root:$rootpasswd" | chpasswd
+
+# add user
+if [ ! -z "$userid" ]; then
+  useradd -u $userid $user
+else
+  useradd $user
+fi
+
+if [ ! -z "$groupid" ]; then
+  usermod -g $groupid $user
+elif [ ! -z "$group" ]; then
+  usermod -g $group $user
+fi
+
+echo "$user:$userpasswd" | chpasswd
+
+echo "$user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers

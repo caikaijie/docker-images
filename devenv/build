@@ -1,0 +1,8 @@
+#!/bin/bash
+
+imagetag="kunkka/devenv"
+#user=`whoami`
+user=kunkka
+#userid=`id -u`
+
+docker build -t $imagetag --build-arg user=$user --build-arg userid=$userid --build-arg userpasswd=$user .

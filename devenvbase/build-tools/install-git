@@ -1,0 +1,5 @@
+#!/bin/bash
+
+yum install -y gettext-devel openssl-devel perl-CPAN perl-devel zlib-devel readline-devel curl-devel
+
+mkdir -p ~/.git-build && cd ~/.git-build && wget https://github.com/git/git/archive/v2.10.0.tar.gz -O git.tar.gz && tar -zxf git.tar.gz && cd git-* && make configure && ./configure --prefix=/usr/local --with-curl && make install && cd ~ && rm -rf ~/.git-build

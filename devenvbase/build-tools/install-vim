@@ -1,0 +1,9 @@
+yum install -y ruby ruby-devel lua lua-devel luajit luajit-devel ctags mercurial python python-devel python3 python3-devel tcl-devel perl perl-devel perl-ExtUtils-ParseXS perl-ExtUtils-XSpp perl-ExtUtils-CBuilder perl-ExtUtils-Embed ncurses-devel
+
+yum remove -y vim-minimal
+
+mkdir -p ~/.build-vim && cd ~/.build-vim && wget https://github.com/vim/vim/archive/v8.0.0006.tar.gz -O vim.tar.gz && tar -zxf vim.tar.gz && cd vim-* && cd src && ./configure --with-features=huge --enable-rubyinterp --enable-largefile --enable-pythoninterp --enable-perlinterp --enable-luainterp --with-luajit --enable-fail-if-missing --enable-cscope && make install
+
+ln -s /usr/local/bin/vim /usr/local/bin/vi
+
+rm -rf ~/.build-vim
